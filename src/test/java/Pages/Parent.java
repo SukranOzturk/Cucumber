@@ -13,17 +13,17 @@ public class Parent {
     WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
     public void myClick(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
-        scrollToElement(element); // scroll yap
+        scrollToElement(element);
         element.click();
     }
-    public void mySendKeys(WebElement element, String yazi){
+    public void mySendKeys(WebElement element, String writing){
 
         wait.until(ExpectedConditions.visibilityOf(element));
-        scrollToElement(element);// scroll yap
+        scrollToElement(element);
         element.clear();
-        element.sendKeys(yazi);
+        element.sendKeys(writing);
     }
-    public void scrollToElement(WebElement element){ //element gözükene kadar bekle
+    public void scrollToElement(WebElement element){
         JavascriptExecutor js=(JavascriptExecutor)GWD.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }

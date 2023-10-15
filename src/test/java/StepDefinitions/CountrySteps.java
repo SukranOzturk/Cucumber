@@ -13,26 +13,25 @@ public class CountrySteps {
     DialogContent dc=new DialogContent();
     @And("Navigate to country")
     public void navigateToCountry() {
-        ln.myClick(ln.setup); //setup
-        ln.myClick(ln.parameters);//parameter
-        ln.myClick(ln.countries);//country
+        ln.myClick(ln.setup);
+        ln.myClick(ln.parameters);
+        ln.myClick(ln.countries);
     }
 
     @When("Create a country")
     public void createACountry() {
-        String ulkeAdi= RandomStringUtils.randomAlphanumeric(8); // 8 harf
-        String ulkeKodu=RandomStringUtils.randomNumeric(4);
+        String countryName= RandomStringUtils.randomAlphanumeric(8);
+        String countryCode=RandomStringUtils.randomNumeric(4);
 
-        dc.myClick(dc.addButton); //+ tuşuna bas
-        dc.mySendKeys(dc.nameInput, "ulkeAdi");//ülke adını gir
-        dc.mySendKeys(dc.codeInput, "ulkeKodu");//ülke kodunu gir
-        dc.myClick(dc.saveButton);//save tuşuna bas
+        dc.myClick(dc.addButton);
+        dc.mySendKeys(dc.nameInput, "countryName");
+        dc.mySendKeys(dc.codeInput, "countryCode");
+        dc.myClick(dc.saveButton);
     }
 
     @Then("Success message should be displayed")
     public void successMessageShouldBeDisplayed() {
         dc.verifyContainsText(dc.successMessage,"success");
-        //success yazısı çıktı mı kontrol et
     }
 
     @When("Create a country name as {string} code as {string}")
