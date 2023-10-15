@@ -1,8 +1,12 @@
 package StepDefinitions;
-
 import Pages.DialogContent;
 import Utilities.GWD;
 import io.cucumber.java.en.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.time.Duration;
 
 public class LoginSteps {
     DialogContent dc=new DialogContent();
@@ -22,13 +26,19 @@ public class LoginSteps {
         //dc.password.sendKeys("TechnoStudy123");
         // dc.loginButton.click();
 
-        dc.sendKeys(dc.username, "turkeyts");
-        dc.sendKeys(dc.password, "TechnoStudy123");
-        dc.click(dc.loginButton);
+        dc.mySendKeys(dc.username,"turkeyts");
+        dc.mySendKeys(dc.password, "TechnoStudy123");
+        dc.myClick(dc.loginButton);
     }
-
     @Then("User should login successfully")
     public void user_should_login_successfully() {
+   //    WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
+   //    wait.until(ExpectedConditions.textToBePresentInElement(dc.textTechnoStudy, "Techno Study"));
+
+   //    Assert.assertTrue(dc.textTechnoStudy.getText().toLowerCase().contains("techno study"));
+
         // System.out.println("Entered, tested");
+
+        dc.verifyContainsText(dc.textTechnoStudy,"Techno Study");
     }
 }
