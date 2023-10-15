@@ -34,4 +34,12 @@ public class CountrySteps {
         dc.verifyContainsText(dc.successMessage,"success");
         //success yazısı çıktı mı kontrol et
     }
+
+    @When("Create a country name as {string} code as {string}")
+    public void createACountryNameAsCodeAs(String name, String code) {
+        dc.myClick(dc.addButton);
+        dc.mySendKeys(dc.nameInput, name);
+        dc.mySendKeys(dc.codeInput, code);
+        dc.myClick(dc.saveButton);
+    }
 }
